@@ -1,0 +1,36 @@
+{
+  "name": "@nuka9510/simple-enum",
+  "version": "1.0.0",
+  "description": "simple enum util class",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -r -f dist && tsc && webpack --config webpack.config.js",
+    "postversion": "git push && git push --tag && npm publish --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuka9510/simple-enum.git"
+  },
+  "keywords": [
+    "module",
+    "util",
+    "enum"
+  ],
+  "author": "nuka9510",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuka9510/simple-enum/issues"
+  },
+  "homepage": "https://github.com/nuka9510/simple-enum",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/webpack": "^5.28.5",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.99.5",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@nuka9510/js-util": "^1.1.4"
+  }
+}
