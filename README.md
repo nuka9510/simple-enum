@@ -112,7 +112,7 @@ switch (e) {
   {
     "imports": {
       "@nuka9510/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/js-util/dist/index.mjs",
-      "@nuka9510/simple-enum": "../../dist/index.mjs"
+      "@nuka9510/simple-enum": "/dist/index.mjs"
     }
   }
 </script>
