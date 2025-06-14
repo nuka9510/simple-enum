@@ -33,7 +33,7 @@
 [top-language]: https://img.shields.io/github/languages/top/nuka9510/simple-enum
 
 ## Usage
-### js (> 1.1.2)
+### js
 ```
 <script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/index.min.js"> </script>
   OR
