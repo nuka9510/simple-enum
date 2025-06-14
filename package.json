@@ -1,6 +1,6 @@
 {
   "name": "@nuka9510/simple-enum",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "simple enum util class",
   "main": "dist/index.mjs",
   "scripts": {
