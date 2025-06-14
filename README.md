@@ -78,7 +78,6 @@ example
 ```
 import { SEnum } from "@nuka9510/simple-enum";
 
-/** @extends {SEnum<string>} */
 class Enum extends SEnum {
   static #A = new Enum('A');
 
@@ -88,7 +87,6 @@ class Enum extends SEnum {
 
   static get B() { return Enum.#B; }
 
-  /** @param {string} value */
   constructor(value) { super(value); }
 }
 
