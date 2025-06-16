@@ -1,4 +1,3 @@
-import { __enum__ } from "../@types/enum";
 export default class Enum<T> {
     #private;
     /**
@@ -33,5 +32,5 @@ export default class Enum<T> {
     /** `value`를 고유 값으로 가지는 `Enum`객체를 반환한다. */
     static valueOf<T>(value: T): Enum<T>;
     /** `Enum`객체에 정의된 `enum`들을 `Iterator`객체로 반환한다. */
-    static values<T>(): ReturnType<ArrayIterator<__enum__<T>>['map']> | null;
+    static values<T>(): IteratorObject<Enum<T>, undefined, unknown> | null;
 }
