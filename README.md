@@ -68,11 +68,9 @@ npm i @nuka9510/simple-enum
 ```
 example
 ├── js
-│  ├── case_1.mjs
-│  └── case_2.mjs
+│  └── case_1.mjs
 └── view
-   ├── case_1.html
-   └── case_2.html
+   └── case_1.html
 ```
 - `js/case_1.mjs`
 ```
