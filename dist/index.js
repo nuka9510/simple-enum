@@ -75,20 +75,36 @@ class Enum {
     }
     /** `value`를 고유 값으로 가지는 `Enum`객체를 반환한다. */
     static valueOf(value) {
-        const __enums__ = (Object.getOwnPropertyDescriptor(this, '__enums__') ?? {});
-        if (value?.constructor != Object) {
-            return __enums__.value?.find((...arg) => arg[0].value == value)?.enums;
+        const __enums__ = Enum.#getIterator(this);
+        for (const enums of __enums__) {
+            if (value?.constructor != Object) {
+                if (enums.value == value) {
+                    return enums.enums;
+                }
+            }
+            else {
+                if (value.hasOwnProperty('__enums_id__')
+                    ? enums.id == Object.getOwnPropertyDescriptor(value, '__enums_id__')?.value
+                    : enums.value == value) {
+                    return enums.enums;
+                }
+            }
         }
-        return __enums__.value?.find((...arg) => value.hasOwnProperty('__enums_id__')
-            ? arg[0].id == Object.getOwnPropertyDescriptor(value, '__enums_id__')?.value
-            : arg[0].value == value)?.enums;
+        return null;
     }
-    /** `Enum`객체에 정의된 `enum`들을 `Iterator`객체로 반환한다. */
-    static values() {
-        const __enums__ = (Object.getOwnPropertyDescriptor(this, '__enums__') ?? {});
-        return __enums__.value
-            ?.values()
-            .map((...arg) => arg[0].enums) ?? null;
+    /** `Enum`객체에 정의된 `enum`들을 `Generator`객체로 반환한다. */
+    static *values() {
+        const __enums__ = Enum.#getIterator(this);
+        for (const enums of __enums__) {
+            yield enums.enums;
+        }
+    }
+    /** `Enum`객체에 정의된 `__enum__`들을 `Generator`객체로 반환한다. */
+    static *#getIterator(enums) {
+        const __enums__ = (Object.getOwnPropertyDescriptor(enums, '__enums__') ?? {});
+        for (const enums of (__enums__.value ?? []).values()) {
+            yield enums;
+        }
     }
 }
 
@@ -528,6 +544,19 @@ class Util {
             .forEach((...arg) => { _arr.push(arr.slice(arg[0] * size, (arg[0] + 1) * size)); });
         return _arr;
     }
+    /**
+     * `value`를 `mapper`로 변환 한 값을 반환한다.
+     */
+    static get(
+    /** 변환 할 `value` */ value, 
+    /** 변환 시 사용할 `mapper` */ mapper) { return mapper(value); }
+    /**
+     * `value`를 `mapper`로 변환 한 값을 반환한다.
+     */
+    static getOrElse(
+    /** 변환 할 `value` */ value, 
+    /** 변환 한 값이 `null`일 경우 기본값 */ def, 
+    /** 변환 시 사용할 `mapper` */ mapper = (value) => value) { return mapper(value) ?? def; }
 }
 
 

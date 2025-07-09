@@ -82,24 +82,35 @@ export default class Enum<T> {
 
   /** `value`를 고유 값으로 가지는 `Enum`객체를 반환한다. */
   static valueOf<T>(value: T): Enum<T> {
-    const __enums__ = (Object.getOwnPropertyDescriptor(this, '__enums__') ?? {}) as SEPropertyDescriptor<__enum__<T>[]>;
+    const __enums__ = Enum.#getIterator<T>(this);
 
-    if (value?.constructor != Object) { return __enums__.value?.find((...arg) => arg[0].value == value)?.enums as Enum<T>; }
+    for (const enums of __enums__) {
+      if (value?.constructor != Object) {
+        if (enums.value == value) { return enums.enums; }
+      } else {
+        if (
+          value.hasOwnProperty('__enums_id__')
+            ? enums.id == Object.getOwnPropertyDescriptor(value, '__enums_id__')?.value
+            : enums.value == value
+        ) { return enums.enums; }
+      }
+    }
 
-    return __enums__.value?.find(
-      (...arg) => value.hasOwnProperty('__enums_id__')
-        ? arg[0].id == Object.getOwnPropertyDescriptor(value, '__enums_id__')?.value
-        : arg[0].value == value
-    )?.enums as Enum<T>;
+    return null;
   }
 
-  /** `Enum`객체에 정의된 `enum`들을 `Iterator`객체로 반환한다. */
-  static values<T>(): IteratorObject<Enum<T>, undefined, unknown> | null {
-    const __enums__ = (Object.getOwnPropertyDescriptor(this, '__enums__') ?? {}) as SEPropertyDescriptor<__enum__<T>[]>;
+  /** `Enum`객체에 정의된 `enum`들을 `Generator`객체로 반환한다. */
+  static * values<T>(): Generator<Enum<T>, void, unknown> {
+    const __enums__ = Enum.#getIterator<T>(this);
 
-    return __enums__.value
-      ?.values()
-      .map((...arg) => arg[0].enums) ?? null;
+    for (const enums of __enums__) { yield enums.enums; }
+  }
+
+  /** `Enum`객체에 정의된 `__enum__`들을 `Generator`객체로 반환한다. */
+  static * #getIterator<T>(enums: typeof Enum<T>): Generator<__enum__<T>, void, unknown> {
+    const __enums__ = (Object.getOwnPropertyDescriptor(enums, '__enums__') ?? {}) as SEPropertyDescriptor<__enum__<T>[]>;
+
+    for (const enums of (__enums__.value ?? []).values()) { yield enums; }
   }
 
 }
