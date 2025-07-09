@@ -38,17 +38,23 @@ export default class Enum<T> {
   }
 
   /** `Enum`객체 고유 값 */
-  get value(): T {
+  get value(): T | null {
     if (this.#value?.constructor != Object) { return this.#value; }
 
-    const __enums__ = Object.getOwnPropertyDescriptor(this.constructor, '__enums__') as SEPropertyDescriptor<__enum__<T>[]>,
-    __value__ = __enums__.value?.find((...arg) => arg[0].value == this.#value),
-    property: SEPropertyDescriptor<string> = { value: __value__?.id },
-    value = JUtil.copy(this.#value) as T;
+    const __enums__ = Enum.#getIterator<T>(this.constructor as typeof Enum<T>);
 
-    Object.defineProperty(value, '__enums_id__', property);
+    for (const enums of __enums__) {
+      if (enums.value == this.#value) {
+        const property: SEPropertyDescriptor<string> = { value: enums.id },
+        value = JUtil.copy(this.#value) as T;
 
-    return value;
+        Object.defineProperty(value, '__enums_id__', property);
+
+        return value;
+      }
+    }
+
+    return null;
   }
 
   /** `Enum`객체의 `property`를 설정한다. */

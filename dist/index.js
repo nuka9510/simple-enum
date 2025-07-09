@@ -50,9 +50,15 @@ class Enum {
         if (this.#value?.constructor != Object) {
             return this.#value;
         }
-        const __enums__ = Object.getOwnPropertyDescriptor(this.constructor, '__enums__'), __value__ = __enums__.value?.find((...arg) => arg[0].value == this.#value), property = { value: __value__?.id }, value = _nuka9510_js_util__WEBPACK_IMPORTED_MODULE_0__.JUtil.copy(this.#value);
-        Object.defineProperty(value, '__enums_id__', property);
-        return value;
+        const __enums__ = Enum.#getIterator(this.constructor);
+        for (const enums of __enums__) {
+            if (enums.value == this.#value) {
+                const property = { value: enums.id }, value = _nuka9510_js_util__WEBPACK_IMPORTED_MODULE_0__.JUtil.copy(this.#value);
+                Object.defineProperty(value, '__enums_id__', property);
+                return value;
+            }
+        }
+        return null;
     }
     /** `Enum`객체의 `property`를 설정한다. */
     static #setEnums(value, enums) {

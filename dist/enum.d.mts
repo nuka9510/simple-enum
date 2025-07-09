@@ -28,7 +28,7 @@ export default class Enum<T> {
      */
     constructor(value: T);
     /** `Enum`객체 고유 값 */
-    get value(): T;
+    get value(): T | null;
     /** `value`를 고유 값으로 가지는 `Enum`객체를 반환한다. */
     static valueOf<T>(value: T): Enum<T>;
     /** `Enum`객체에 정의된 `enum`들을 `Generator`객체로 반환한다. */
