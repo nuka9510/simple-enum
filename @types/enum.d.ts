@@ -1,4 +1,4 @@
-import Enum from "../src/enum.mts";
+import Enum from "../src/enum";
 
 export interface SEPropertyDescriptor<T> extends PropertyDescriptor {
   value?: T;

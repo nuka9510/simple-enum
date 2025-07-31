@@ -1,6 +1,6 @@
-import { SEnum } from "@nuka9510/simple-enum";
+import { Enum } from "@nuka9510/simple-enum";
 
-class Enum extends SEnum {
+class MainEnum extends Enum {
   get test1() { return `#${ this.value }`; }
 
   constructor(value) { super(value); }
@@ -9,7 +9,7 @@ class Enum extends SEnum {
 
 }
 
-class SubEnum extends Enum {
+class SubEnum extends MainEnum {
   static #A = new SubEnum('A');
 
   static #B = new SubEnum('B');

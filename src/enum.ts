@@ -1,5 +1,5 @@
-import { JUtil } from "@nuka9510/js-util";
 import { __enum__, SEPropertyDescriptor } from "../@types/enum";
+import { Util } from "@nuka9510/js-util";
 
 export default class Enum<T> {
   /** `Enum`객체 고유 값 */
@@ -46,7 +46,7 @@ export default class Enum<T> {
     for (const enums of __enums__) {
       if (enums.value == this.#value) {
         const property: SEPropertyDescriptor<string> = { value: enums.id },
-        value = JUtil.copy(this.#value) as T;
+        value = Util.copy(this.#value) as T;
 
         Object.defineProperty(value, '__enums_id__', property);
 

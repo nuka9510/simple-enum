@@ -1,4 +1,4 @@
-import { JUtil } from "@nuka9510/js-util";
+import { Util } from "@nuka9510/js-util";
 export default class Enum {
     /** `Enum`객체 고유 값 */
     #value;
@@ -40,7 +40,7 @@ export default class Enum {
         const __enums__ = Enum.#getIterator(this.constructor);
         for (const enums of __enums__) {
             if (enums.value == this.#value) {
-                const property = { value: enums.id }, value = JUtil.copy(this.#value);
+                const property = { value: enums.id }, value = Util.copy(this.#value);
                 Object.defineProperty(value, '__enums_id__', property);
                 return value;
             }

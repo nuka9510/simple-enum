@@ -1,13 +1,13 @@
-import { SEnum } from "@nuka9510/simple-enum";
+import { Enum } from "@nuka9510/simple-enum";
 
-class Enum extends SEnum {
-  static #A = new Enum('A');
+class TestEnum extends Enum {
+  static #A = new TestEnum('A');
 
-  static #B = new Enum('B');
+  static #B = new TestEnum('B');
 
-  static get A() { return Enum.#A; }
+  static get A() { return TestEnum.#A; }
 
-  static get B() { return Enum.#B; }
+  static get B() { return TestEnum.#B; }
 
   get test1() { return `#${ this.value }`; }
 
@@ -17,9 +17,9 @@ class Enum extends SEnum {
 
 }
 
-const e = Enum.valueOf('A');
+const e = TestEnum.valueOf('A');
 
 switch (e) {
-  case Enum.A: console.log('A', e.test1, e.test2('test'), Enum.A.test1, Enum.A.test2('test')); break;
-  case Enum.B: console.log('B', e.test1, e.test2('test'), Enum.B.test1, Enum.B.test2('test')); break;
+  case TestEnum.A: console.log('A', e.test1, e.test2('test'), TestEnum.A.test1, TestEnum.A.test2('test')); break;
+  case TestEnum.B: console.log('B', e.test1, e.test2('test'), TestEnum.B.test1, TestEnum.B.test2('test')); break;
 }

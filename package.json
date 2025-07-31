@@ -2,10 +2,26 @@
   "name": "@nuka9510/simple-enum",
   "version": "1.0.6",
   "description": "simple enum util class",
-  "main": "dist/index.mjs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.min.mjs",
+      "require": "./dist/cjs/index.min.cjs"
+    },
+    "./js-util": {
+      "types": "./dist/js-util.d.ts",
+      "import": "./dist/esm/js-util.min.mjs",
+      "require": "./dist/cjs/js-util.min.cjs"
+    }
+  },
+  "files": [
+    "@types",
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -r -f dist && tsc && webpack --config webpack.config.js",
+    "build": "rm -r -f dist && tsc && webpack --config webpack.config.cjs",
     "postversion": "git push && git push --tag && npm publish --access=public"
   },
   "repository": {
@@ -13,9 +29,13 @@
     "url": "git+https://github.com/nuka9510/simple-enum.git"
   },
   "keywords": [
-    "module",
     "util",
-    "enum"
+    "enum",
+    "module",
+    "CommonJS",
+    "ES Module",
+    "cjs",
+    "esm"
   ],
   "author": "nuka9510",
   "license": "MIT",
@@ -31,6 +51,6 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@nuka9510/js-util": "^1.1.6"
+    "@nuka9510/js-util": "^1.2.3"
   }
 }

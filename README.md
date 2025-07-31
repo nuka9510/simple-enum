@@ -32,37 +32,95 @@
 
 [top-language]: https://img.shields.io/github/languages/top/nuka9510/simple-enum
 
-## Usage
-### js
-```
-<script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/index.min.js"> </script>
-  OR
-<script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/index.min.js"> </script>
-  OR
-<script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/index.min.js"> </script>
-```
-### mjs
+## Install
 ```
 npm i @nuka9510/simple-enum
+```
+```
+<script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/js/index.min.js"> </script>
+```
+```
+<script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/js/index.min.js"> </script>
+```
+```
+<script src="https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/js/index.min.js"> </script>
 ```
 ```
 <script type="importmap">
   {
     "imports": {
-      "@nuka9510/js-util": "<path>/node_modules/@nuka9510/js-util/dist/index.mjs",
-      "@nuka9510/simple-enum": "<path>/node_modules/@nuka9510/simple-enum/dist/index.mjs"
-        OR
-      "@nuka9510/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/js-util/dist/index.mjs",
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/index.mjs"
-        OR
-      "@nuka9510/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/js-util@latest/dist/index.mjs",
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/index.mjs"
-        OR
-      "@nuka9510/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/js-util@<specific-version>/dist/index.mjs",
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/index.mjs"
+      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/index.min.mjs",
+      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/js-util.min.mjs"
     }
   }
 </script>
+```
+```
+<script type="importmap">
+  {
+    "imports": {
+      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/esm/index.min.mjs",
+      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/esm/js-util.min.mjs"
+    }
+  }
+</script>
+```
+```
+<script type="importmap">
+  {
+    "imports": {
+      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/esm/index.min.mjs",
+      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/esm/js-util.min.mjs"
+    }
+  }
+</script>
+```
+## Usage
+### js
+```
+class TestEnum extends simpleEnum.Enum {
+  static #A = new TestEnum('A');
+
+  static #B = new TestEnum('B');
+
+  static get A() { return TestEnum.#A; }
+
+  static get B() { return TestEnum.#B; }
+
+  constructor(value) { super(value); }
+}
+```
+### mjs
+```
+import { Enum } from "@nuka9510/simple-enum";
+
+class TestEnum extends Enum {
+  static #A = new TestEnum('A');
+
+  static #B = new TestEnum('B');
+
+  static get A() { return TestEnum.#A; }
+
+  static get B() { return TestEnum.#B; }
+
+  constructor(value) { super(value); }
+}
+```
+### cjs (> 1.1.0)
+```
+const simpleEnum = require('@nuka9510/simple-enum');
+
+class TestEnum extends simpleEnum.Enum {
+  static #A = new TestEnum('A');
+
+  static #B = new TestEnum('B');
+
+  static get A() { return TestEnum.#A; }
+
+  static get B() { return TestEnum.#B; }
+
+  constructor(value) { super(value); }
+}
 ```
 ### example
 ```
@@ -74,25 +132,25 @@ example
 ```
 - `js/case_1.mjs`
 ```
-import { SEnum } from "@nuka9510/simple-enum";
+import { Enum } from "@nuka9510/simple-enum";
 
-class Enum extends SEnum {
-  static #A = new Enum('A');
+class TestEnum extends Enum {
+  static #A = new TestEnum('A');
 
-  static #B = new Enum('B');
+  static #B = new TestEnum('B');
 
-  static get A() { return Enum.#A; }
+  static get A() { return TestEnum.#A; }
 
-  static get B() { return Enum.#B; }
+  static get B() { return TestEnum.#B; }
 
   constructor(value) { super(value); }
 }
 
-const e = Enum.valueOf('A');
+const e = TestEnum.valueOf('A');
 
 switch (e) {
-  case Enum.A: console.log('A', e.value, Enum.A.value); break;
-  case Enum.B: console.log('B', e.value, Enum.B.value); break;
+  case TestEnum.A: console.log('A', e.value, TestEnum.A.value); break;
+  case TestEnum.B: console.log('B', e.value, TestEnum.B.value); break;
 }
 ```
 - `view/case_1.html`
@@ -109,8 +167,8 @@ switch (e) {
 <script type="importmap">
   {
     "imports": {
-      "@nuka9510/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/js-util/dist/index.mjs",
-      "@nuka9510/simple-enum": "/dist/index.mjs"
+      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/index.min.mjs",
+      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/js-util.min.mjs"
     }
   }
 </script>
