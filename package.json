@@ -13,6 +13,12 @@
       "types": "./dist/js-util.d.ts",
       "import": "./dist/esm/js-util.min.mjs",
       "require": "./dist/cjs/js-util.min.cjs"
+    },
+    "./@types/enum": {
+      "types": "./@types/enum.d.ts"
+    },
+    "./@types/js-util/util": {
+      "types": "./@types/js-util/util.d.ts"
     }
   },
   "files": [
@@ -51,6 +57,6 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@nuka9510/js-util": "^1.2.3"
+    "@nuka9510/js-util": "^1.2.4"
   }
 }
