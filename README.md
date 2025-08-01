@@ -48,30 +48,21 @@ npm i @nuka9510/simple-enum
 ```
 <script type="importmap">
   {
-    "imports": {
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/index.min.mjs",
-      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/js-util.min.mjs"
-    }
+    "imports": { "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/index.min.mjs" }
   }
 </script>
 ```
 ```
 <script type="importmap">
   {
-    "imports": {
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/esm/index.min.mjs",
-      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/esm/js-util.min.mjs"
-    }
+    "imports": { "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@latest/dist/esm/index.min.mjs" }
   }
 </script>
 ```
 ```
 <script type="importmap">
   {
-    "imports": {
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/esm/index.min.mjs",
-      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/esm/js-util.min.mjs"
-    }
+    "imports": { "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum@<specific-version>/dist/esm/index.min.mjs" }
   }
 </script>
 ```
@@ -166,10 +157,7 @@ switch (e) {
 </body>
 <script type="importmap">
   {
-    "imports": {
-      "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/index.min.mjs",
-      "@nuka9510/simple-enum/js-util": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/js-util.min.mjs"
-    }
+    "imports": { "@nuka9510/simple-enum": "https://cdn.jsdelivr.net/npm/@nuka9510/simple-enum/dist/esm/index.min.mjs" }
   }
 </script>
 <script src="../js/case_1.mjs" type="module"></script>
